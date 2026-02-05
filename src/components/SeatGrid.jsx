@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function SeatGrid() {
-  // Create a 2D array representing rows and seats
+export default function SeatGrid({ onSelectChange }) {
   const initialSeats = [
     ["", "", "", "", "", "", "", ""],
     ["", "", "", "occupied", "occupied", "", "", ""],
@@ -14,7 +13,6 @@ export default function SeatGrid() {
   const [seats, setSeats] = useState(initialSeats);
 
   const toggleSeat = (rowIndex, seatIndex) => {
-    // Prevent clicking occupied seats
     if (seats[rowIndex][seatIndex] === "occupied") return;
 
     const updated = seats.map((row, r) =>
@@ -28,6 +26,11 @@ export default function SeatGrid() {
 
     setSeats(updated);
   };
+
+  useEffect(() => {
+    const count = seats.flat().filter((seat) => seat === "selected").length;
+    onSelectChange(count);
+  }, [seats, onSelectChange]);
 
   return (
     <div className="container">

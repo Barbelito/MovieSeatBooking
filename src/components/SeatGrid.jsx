@@ -28,8 +28,15 @@ export default function SeatGrid({ onSelectChange }) {
   };
 
   useEffect(() => {
-    const count = seats.flat().filter((seat) => seat === "selected").length;
-    onSelectChange(count);
+    const selectedSeats = [];
+    seats.forEach((row, rowIndex) => {
+      row.forEach((seat, seatIndex) => {
+        if (seat === "selected") {
+          selectedSeats.push({ row: rowIndex, seat: seatIndex });
+        }
+      });
+    });
+    onSelectChange(selectedSeats);
   }, [seats, onSelectChange]);
 
   return (

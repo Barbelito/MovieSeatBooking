@@ -6,14 +6,25 @@ import Summary from "./components/Summary";
 
 export default function App() {
   const [moviePrice, setMoviePrice] = useState(100);
-  const [selectedCount, setSelectedCount] = useState(0);
+  const [selectedSeats, setSelectedSeats] = useState([]);
+  const [selectedMovieId, setSelectedMovieId] = useState(null);
 
   return (
     <>
-      <MovieSelector onChange={(e) => setMoviePrice(Number(e.target.value))} />
+      <MovieSelector
+        onChange={(movie) => {
+          setMoviePrice(movie.price);
+          setSelectedMovieId(movie.id);
+        }}
+      />
       <Showcase />
-      <SeatGrid onSelectChange={setSelectedCount} />
-      <Summary count={selectedCount} total={selectedCount * moviePrice} />
+      <SeatGrid onSelectChange={setSelectedSeats} />{" "}
+      <Summary
+        count={selectedSeats.length}
+        total={selectedSeats.length * moviePrice}
+        seats={selectedSeats}
+        movieId={selectedMovieId}
+      />
     </>
   );
 }

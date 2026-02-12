@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function SeatGrid({ onSelectChange }) {
+export default function SeatGrid({ onSelectChange, occupiedSeats }) {
   const initialSeats = [
     ["", "", "", "", "", "", "", ""],
     ["", "", "", "occupied", "occupied", "", "", ""],
@@ -26,6 +26,18 @@ export default function SeatGrid({ onSelectChange }) {
 
     setSeats(updated);
   };
+
+  useEffect(() => {
+    const newSeats = initialSeats.map((row, rowIndex) =>
+      row.map((seat, seatIndex) => {
+        const isOccupied = occupiedSeats.some(
+          (s) => s.row === rowIndex && s.seat === seatIndex,
+        );
+        return isOccupied ? "occupied" : "";
+      }),
+    );
+    setSeats(newSeats);
+  }, [occupiedSeats]);
 
   useEffect(() => {
     const selectedSeats = [];

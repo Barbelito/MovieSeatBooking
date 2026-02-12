@@ -1,6 +1,13 @@
 import { useState } from "react";
 
-export default function BookingForm({ count, total, seats, movieId, onClose }) {
+export default function BookingForm({
+  count,
+  total,
+  seats,
+  movieId,
+  onClose,
+  onBookingComplete,
+}) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
 
@@ -36,6 +43,7 @@ export default function BookingForm({ count, total, seats, movieId, onClose }) {
       if (!response.ok) throw new Error("Something went wrong");
 
       alert("Booking saved!");
+      onBookingComplete();
       onClose();
     } catch (error) {
       alert("Could not save booking.");
@@ -44,25 +52,41 @@ export default function BookingForm({ count, total, seats, movieId, onClose }) {
   };
 
   return (
-    <div id="bookingFormContainer">
-      <form id="bookingForm" onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
+    <div className="booking-panel">
+      <form className="booking-form" onSubmit={handleSubmit}>
+        <h3 className="form-title">Complete Your Booking</h3>
 
-        <label>Phone number:</label>
-        <input
-          type="text"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          required
-        />
+        <div className="form-group">
+          <label className="form-label">Full Name</label>
+          <input
+            type="text"
+            value={name}
+            placeholder="Enter your name"
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
 
-        <button type="submit">Confirm booking</button>
+        <div className="form-group">
+          <label className="form-label">Phone Number</label>
+          <input
+            type="text"
+            value={phone}
+            placeholder="07XXXXXXXX"
+            onChange={(e) => setPhone(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="button-row">
+          <button type="submit" className="confirm-btn">
+            Confirm
+          </button>
+
+          <button type="button" className="cancel-btn" onClick={onClose}>
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );

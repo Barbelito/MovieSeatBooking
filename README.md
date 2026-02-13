@@ -1,16 +1,74 @@
-# React + Vite
+Movie Seat Booking App
+A simple movie seat booking application built with React + Vite.
+Users can select a movie, choose seats, and complete a booking.
+An admin panel allows adding, editing, and deleting movies.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project uses JSON‑Server as a lightweight backend when running locally.
 
-Currently, two official plugins are available:
+Features
+Choose a movie and see its price
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Visual seat grid with occupied seats
 
-## React Compiler
+Book seats with name + phone number
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Admin panel to manage movies (CRUD)
 
-## Expanding the ESLint configuration
+JSON‑Server backend for storing:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Movies
+
+Bookings
+
+Tech Stack
+React (with Vite)
+
+JSON‑Server (local backend)
+
+CSS for styling
+
+Running the Project Locally
+1. Install dependencies
+Code
+npm install
+2. Start JSON‑Server
+This project uses db.json as a fake backend.
+Run this in a separate terminal:
+
+Code
+npx json-server db.json
+Your API will be available at:
+
+Code
+http://localhost:3000/movies
+http://localhost:3000/bookings
+3. Start the React app
+Code
+npm run dev
+Vite will start the site at:
+
+Code
+http://localhost:3000
+The app will now communicate with JSON‑Server on port 3001.
+
+GitHub Pages Deployment
+The project can be viewed on GitHub Pages, but GitHub Pages cannot run JSON‑Server.
+This means:
+
+The UI will load
+
+But movies and bookings will not work
+
+Admin panel cannot save changes
+
+Seat selection cannot load occupied seats
+
+GitHub Pages is static hosting only, so backend features require running the project locally.
+
+If you want full functionality, download the project and run:
+
+Code
+npm install
+npx json-server db.json
+npm run dev
+

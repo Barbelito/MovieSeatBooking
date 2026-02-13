@@ -16,9 +16,9 @@
       "price": 70
     },
     {
+      "id": "4",
       "name": "Rampage",
-      "price": 40,
-      "id": "4"
+      "price": 40
     }
   ],
   "bookings": [
@@ -68,6 +68,40 @@
         }
       ],
       "total": 200
+    },
+    {
+      "id": "c4a7",
+      "name": "tewst",
+      "phone": "1234142135",
+      "movieId": 1,
+      "seats": [
+        {
+          "row": 1,
+          "seat": 4
+        },
+        {
+          "row": 1,
+          "seat": 5
+        }
+      ],
+      "total": 200
+    },
+    {
+      "id": "b102",
+      "name": "gdfgdgs",
+      "phone": "12341234",
+      "movieId": 1,
+      "seats": [
+        {
+          "row": 5,
+          "seat": 6
+        },
+        {
+          "row": 5,
+          "seat": 7
+        }
+      ],
+      "total": 80
     }
   ]
 }

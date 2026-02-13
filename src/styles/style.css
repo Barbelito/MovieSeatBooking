@@ -229,3 +229,51 @@ p.text span {
 .cancel-btn:hover {
   background: #333;
 }
+.admin-container {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: #1f1f1f;
+  color: #f1f1f1;
+}
+
+.admin-form {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-form input {
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #555;
+  background: #2b2b2b;
+  color: #f1f1f1;
+}
+
+.admin-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.admin-buttons button {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.admin-table th,
+.admin-table td {
+  border: 1px solid #444;
+  padding: 6px 8px;
+  font-size: 0.9rem;
+}

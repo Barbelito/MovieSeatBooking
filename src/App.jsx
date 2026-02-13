@@ -54,11 +54,12 @@ export default function App() {
       <button onClick={() => setShowAdmin(true)}>Admin</button>
 
       <MovieSelector
-        onChange={(movie) => {
-          setMoviePrice(movie.price);
-          setSelectedMovieId(movie.id);
+        onChange={(e) => {
+          const price = Number(e.target.value);
+          setMoviePrice(price);
         }}
       />
+
       <Showcase />
       <SeatGrid
         onSelectChange={setSelectedSeats}

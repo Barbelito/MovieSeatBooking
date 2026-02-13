@@ -25,17 +25,13 @@ export default function MovieSelector({ onChange }) {
     }
     loadMovies();
   }, []);
-  const handleChange = (e) => {
-    const selectedId = Number(e.target.value);
-    const movie = movies.find((m) => m.id === selectedId);
-    if (movie) onChange(movie);
-  };
+
   return (
     <div className="movie-container">
       <label htmlFor="movie">Pick a movie:</label>
-      <select id="movie" onChange={handleChange}>
+      <select id="movie" onChange={onChange}>
         {movies.map((movie) => (
-          <option key={movie.id} value={movie.id}>
+          <option key={movie.id} value={movie.price}>
             {movie.name} ({movie.price} kr)
           </option>
         ))}
